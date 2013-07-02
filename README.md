@@ -1,7 +1,7 @@
 coffeePrices.py
 ===============
 
-Screenscrapes the Sweet Maria's green coffee rice listings.
+Screenscrapes the Sweet Maria's green coffee price listings.
 
 This is current a WIP.
 
