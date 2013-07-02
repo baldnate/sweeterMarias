@@ -1,7 +1,7 @@
 coffeePrices.py
 ===============
 
-Screenscrapes the Sweet Maria's green coffee rice listings, and outputs info about the prices.
+Screenscrapes the Sweet Maria's green coffee price listings, and outputs info about the prices.
 
 This is current a WIP.  Output is CSV for the moment, and only has the coffee name and the price per pound for the various order sizes.
 
