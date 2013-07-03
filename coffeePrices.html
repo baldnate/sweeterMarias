@@ -2,28 +2,39 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Demo</title>
+    <title>Sweeter Maria's</title>
+    <script src="jquery.js"></script>
+    <script src="jquery.tablesorter.min.js"></script>
 </head>
 <body>
-    <a href="http://jquery.com/">jQuery</a>
-    <script src="jquery.js"></script>
-    <script>
- 
-    $( document ).ready(function() {
-        $.getJSON("coffee.json", function(data) {
-            var items = [];
-            $.each(data, function(key, val) {
-                items.push('<li id="' + key + '"><a href="' + val.link + '">' + key + '</a></li>');
-            });
+    <table class="tablesorter" id='coffeeTable'>
+        <thead>
+            <tr>
+                <th>Coffee Name</th>
+                <th>Full Review Link</th>
+                <th>1 lb</th>
+                <th>2 lb</th>
+                <th>5 lb</th>
+                <th>10 lb</th>
+                <th>20 lb</th>
+            </tr>
+        </thead>
+        <tbody id='coffeeTableBody'>
+        </tbody>
+    </table>
 
-            $('<ul/>', {
-                'class': 'my-new-list',
-                html: items.join('')
-            }).appendTo('body');
+    <script>
+    $( document ).ready(function() {
+        $("#coffeeTable").tablesorter(); 
+        $.getJSON("coffee.json", function(data) {
+            $.each(data, function(key, val) {
+                $('<tr>', {
+                    html: '<td>'+key+'</td><td><a href="' + val.link + '">' + val.link + '</a></td><td>' + val.prices[0].price +'</td>'
+                }).appendTo('#coffeeTableBody');
+            });
+            $("#coffeeTable").trigger("update"); 
         });
-        event.preventDefault();
     });
- 
     </script>
 </body>
 </html>
