@@ -26,10 +26,14 @@
     <script>
     $( document ).ready(function() {
         $("#coffeeTable").tablesorter(); 
-        $.getJSON("coffee.json", function(data) {
+        $.getJSON("coffee.json", function(data) {            
             $.each(data, function(key, val) {
+                var priceCells = [];
+                $.each(val.prices, function(index, priceData) {
+                    priceCells.push('<td>' + priceData.price + '</td>');
+                });
                 $('<tr>', {
-                    html: '<td>'+key+'</td><td><a href="' + val.link + '">' + val.link + '</a></td><td>' + val.prices[0].price +'</td>'
+                    html: '<td>'+key+'</td><td><a href="' + val.link + '">' + val.link + '</a></td>' + priceCells.join('')
                 }).appendTo('#coffeeTableBody');
             });
             $("#coffeeTable").trigger("update"); 
