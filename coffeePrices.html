@@ -7,16 +7,25 @@
     <script src="jquery.tablesorter.min.js"></script>
 </head>
 <body>
+    <form name="priceControl" action="" method="">
+        <table>
+            <tr><td><input type="radio" name="priceselector" value="price1lb" checked>1 lb</td></tr>
+            <tr><td><input type="radio" name="priceselector" value="price2lb">2 lb</td></tr>
+            <tr><td><input type="radio" name="priceselector" value="price5lb">5 lb </td></tr>
+            <tr><td><input type="radio" name="priceselector" value="price10lb">10 lb </td></tr>
+            <tr><td><input type="radio" name="priceselector" value="price20lb">20 lb </td></tr>
+        </table>
+    </form>
+
     <table class="tablesorter" id='coffeeTable'>
         <thead>
             <tr>
                 <th>Coffee Name</th>
-                <th>Full Review Link</th>
-                <th>1 lb</th>
-                <th>2 lb</th>
-                <th>5 lb</th>
-                <th>10 lb</th>
-                <th>20 lb</th>
+                <th class="price1lb">Price (1 lb)</th>
+                <th class="price2lb">Price (2 lb)</th>
+                <th class="price5lb">Price (5 lb)</th>
+                <th class="price10lb">Price (10 lb)</th>
+                <th class="price20lb">Price (20 lb)</th>
             </tr>
         </thead>
         <tbody id='coffeeTableBody'>
@@ -30,12 +39,24 @@
             $.each(data, function(key, val) {
                 var priceCells = [];
                 $.each(val.prices, function(index, priceData) {
-                    priceCells.push('<td>' + priceData.price + '</td>');
+                    priceCells.push('<td class="price' + priceData.quant + 'lb">' + priceData.price + '</td>');
                 });
                 $('<tr>', {
-                    html: '<td>'+key+'</td><td><a href="' + val.link + '">' + val.link + '</a></td>' + priceCells.join('')
+                    html: '<td>' + key + '</td>' + priceCells.join('')
                 }).appendTo('#coffeeTableBody');
             });
+
+            // hide all but 1lb price column initially
+            $('*[class^="price"]').hide();
+            $('*[class^="price1lb"]').show();
+
+            // set up price filter buttons
+            $('input[name=priceselector]:radio').click(function() {
+                var newcol = $('input[name=priceselector]:checked').val();
+                $('*[class^="price"]').hide();
+                $('*[class^='+newcol+']').show();
+            });
+
             $("#coffeeTable").trigger("update"); 
         });
     });

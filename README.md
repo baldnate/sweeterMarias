@@ -1,10 +1,16 @@
-coffeePrices.py
-===============
+sweeterMarias - An improved presentation of Sweet Maria's green coffee info
+===========================================================================
 
-Screenscrapes the Sweet Maria's green coffee price listings.
-
-In progress:
-* Create a webpage that can display the JSON in some nice way.
+Overview:
+The Python script scrapes the Sweet Maria's website and dumps the info in a 
+json file.  The webpage allows interactive access to the coffee information.
 
 Wish list:
-* Capture tags, full reviews for each coffee (will need to scrape other pages to do so)
+* Allow the display of:
+** Mini reviews
+** Link to full review
+* Allow filtering based on:
+** roast levels
+** origin
+** processing
+** keywords (fruited, earthy, etc.)
