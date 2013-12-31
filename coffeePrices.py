@@ -20,7 +20,7 @@ def get_coffee_info():
    soup = BeautifulSoup(html)
 
    retval = {}
-   for row in soup.find_all('tr', class_='defaultfont14'):
+   for row in soup.find_all('tr', attrs={'class': 'defaultfont14'}):
       coffee = {}      
       cells = [c.text.strip() for c in row.find_all('td') if 'Limit' not in c.text.strip()]
       name = cells[0]
