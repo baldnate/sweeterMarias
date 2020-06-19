@@ -1,7 +1,7 @@
-sweeterMarias
+sweeterMarias - Archived
 =============
 
-sweeterMarias is an improved presentation of Sweet Maria's green coffee info.
+sweeterMarias was an improved presentation of Sweet Maria's green coffee info.  Since I wrote this their website has changed significantly.  Those changes both broke this code, but also addressed the shortcomings this code was trying to remedy.
 
 Structure
 ---------
